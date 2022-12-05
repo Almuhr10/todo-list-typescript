@@ -40,4 +40,4 @@ export const deleteTodoSchema = z.object({
   }),
 });
 
-export type deleteToddSchemaType = z.infer<typeof deleteTodoSchema>['params'];
+export type deleteTodoSchemaType = z.infer<typeof deleteTodoSchema>['params'];

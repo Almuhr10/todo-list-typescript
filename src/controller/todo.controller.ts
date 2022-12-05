@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import { prisma } from '../config/db';
 import { IUser } from '../middleware/auth';
 import {
-  deleteToddSchemaType,
+  deleteTodoSchemaType,
   updateTodoSchemaType,
 } from '../zod_schema/todo.schema';
 
@@ -71,7 +71,7 @@ export const updateTodoHandler = async (req: Request, res: Response) => {
 
 export const deleteTodoHandler = async (req: Request, res: Response) => {
   const user = res.locals.user as IUser;
-  const { todoid } = req.params as deleteToddSchemaType;
+  const { todoid } = req.params as deleteTodoSchemaType;
 
   const deleteCount = await prisma.todo.deleteMany({
     where: {

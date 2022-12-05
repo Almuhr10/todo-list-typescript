@@ -8,7 +8,11 @@ import {
 
 import { protect } from '../middleware/auth';
 import validate from '../middleware/validate';
-import { addTodoSchema, updateTodoSchema } from '../zod_schema/todo.schema';
+import {
+  addTodoSchema,
+  deleteTodoSchema,
+  updateTodoSchema,
+} from '../zod_schema/todo.schema';
 
 const router = express.Router();
 
@@ -16,9 +20,9 @@ router.get('/', protect, getAllTodoHandler);
 router.post('/', protect, validate(addTodoSchema), addTodoHandler);
 router.put('/:todoid', protect, validate(updateTodoSchema), updateTodoHandler);
 router.delete(
-  '/todoid',
+  '/:todoid',
   protect,
-  validate(updateTodoSchema),
+  validate(deleteTodoSchema),
   deleteTodoHandler
 );
 
